@@ -1,0 +1,50 @@
+﻿@using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile
+@using MovieCentral.Client.Store.Features.UserProfile.Actions
+@implements IDisposable
+@inject AuthenticationStateProvider _authenticationStateProvider
+@inject IState<UserProfileState> UserProfileState 
+@inject IState<WatchListState> WatchListState
+@inject WatchListFacade WatchListFacade
+@inject UserProfileFacade UserProfileFacade
+
+@ChildContent
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    // The event can trigger multiple times when being redirected from the Authentication page to wherever you're going.
+    public bool hasRunInit;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _authenticationStateProvider.AuthenticationStateChanged += this.OnAuthenticationStateChanged;
+
+        await LoadUserProfile(_authenticationStateProvider.GetAuthenticationStateAsync());
+    }
+
+    private async Task LoadUserProfile(Task<AuthenticationState> task)
+    {
+        var user = (await task).User;
+
+        if (user.Identity.IsAuthenticated && !UserProfileState.Value.IsLoggedIn && !hasRunInit)
+        {
+            hasRunInit = true;
+
+            UserProfileFacade.Load(user.Identity.Name);
+
+            if (WatchListState.Value.FetchState == Client.Store.FetchState.None)
+            {
+                WatchListFacade.Load();
+            }
+        }
+        else if (!user.Identity.IsAuthenticated && UserProfileState.Value.IsLoggedIn)
+        {
+            UserProfileFacade.Logout();
+        }
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task) => await LoadUserProfile(task);
+
+    public void Dispose() => _authenticationStateProvider.AuthenticationStateChanged -= this.OnAuthenticationStateChanged;
+}

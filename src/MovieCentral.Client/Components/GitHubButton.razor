@@ -1,0 +1,12 @@
+﻿<MudButton Class="mt-6"
+		   Href="@Url"
+		   Style="text-transform:none;"
+		   Variant="Variant.Outlined"
+		   StartIcon="@Icons.Custom.Brands.GitHub"
+		   Color="Color.Inherit"
+		   Size="Size.Large">Source Code on GitHub</MudButton>
+
+@code {
+	[Parameter]
+	public string Url { get; set; }
+}

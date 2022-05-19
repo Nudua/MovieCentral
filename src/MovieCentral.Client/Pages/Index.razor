@@ -1,0 +1,84 @@
+﻿@page "/"
+
+<PageTitle>MovieCentral - Home Page</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+	<MudText Typo="Typo.h3" GutterBottom="true">Welcome</MudText>
+
+	<MudText GutterBottom="true" Typo="Typo.body1">This website is an ASP.NET Core Web API + Blazor WebAssembly fullstack webapplication running on .NET 6.
+		It was started as a learning project, serving as a testbed for things I wanted to learn more about, such as Blazor,
+		authentication with Azure AD B2C, and backend integration testing to mention a few.
+	</MudText>
+
+	<MudText GutterBottom="true" Typo="Typo.body1">You can add movies from the Top 250 rated movies of all times to your own watchlist if you signup and login.
+		The metadata for these movies, such as, titles, poster art, runtime, rating has been sourced from
+		<a href="https://www.themoviedb.org/" target="_blank">The Movie Database</a> (TMDB) and their API
+		and this website is in no way affiliated or endorsed by TMDB.</MudText>
+
+	<GitHubButton Url="@SourceCodeUrl" />
+
+	@foreach (var techSection in _sections)
+	{
+		<MudText Typo="Typo.h5" Class="mt-6" GutterBottom="false">@techSection.Header</MudText>
+		<ul class="tech-list">
+			@foreach (var link in techSection.Links)
+			{
+				@if (link.HasUrl())
+				{
+					<li class="ml-6"><MudButton Style="text-transform:none;" Variant="Variant.Text" Href="@link.Url">@link.Title</MudButton></li>
+				}
+				else
+				{
+					<li class="ml-6"><MudButton Style="text-transform:none;" Variant="Variant.Text">@link.Title</MudButton></li>
+				}
+			}
+		</ul>
+	}
+
+	<GitHubButton Url="@SourceCodeUrl" />
+
+	<MudText Typo="Typo.body1"></MudText>
+</MudContainer>
+
+@code {
+	private const string SourceCodeUrl = "https://github.com/Nudua/MovieCentral";
+
+	private List<TechSection> _sections;
+
+	private record TechSection(string Header, List<LinkItem> Links);
+
+	private record LinkItem(string Title, string Url = "")
+	{
+		public bool HasUrl() => !string.IsNullOrEmpty(Url);
+	}
+
+	protected override void OnInitialized()
+	{
+		_sections = new List<TechSection>()
+		{
+			new TechSection("Frontend", new List<LinkItem>()
+			{
+				new("Blazor WebAssembly","https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor"),
+				new("Microsoft Authentication Library (MSAL)"),
+				new("MudBlazor (UI Component Library)","https://mudblazor.com"),
+				new("Fluxor (State Management)","https://github.com/mrpmorris/Fluxor")
+			}),
+			new TechSection("Backend", new List<LinkItem>()
+			{
+				new("Clean Architecture", "https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures#clean-architecture"),
+				new("ASP.NET Core Web API (.NET 6)"),
+				new("Entity Framework Core 6","https://docs.microsoft.com/en-us/ef/core/"),
+				new("XUnit (testing)", "https://xunit.net/"),
+				new("Docker", "https://www.docker.com/")
+			}),
+			new TechSection("Authentication + Hosting", new List<LinkItem>()
+			{
+				new("Azure Active Directory B2C (Auth)","https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor"),
+				new("Azure App Service (Hosting)","https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor"),
+				new("DockerHub","https://hub.docker.com/"),
+				new("GitHub Actions", "https://github.com/features/actions")
+			})
+		};
+	}
+
+}

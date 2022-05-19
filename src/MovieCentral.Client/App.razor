@@ -1,0 +1,28 @@
+﻿<Fluxor.Blazor.Web.StoreInitializer />
+<CascadingAuthenticationState>
+    <InitialDataLoader>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    @if (context.User.Identity?.IsAuthenticated != true)
+                    {
+                        <RedirectToLogin />
+                    }
+                    else
+                    {
+                        <MudAlert role="alert" Severity="Severity.Error">You are not authorized to access this resource.</MudAlert>
+                    }
+                </NotAuthorized>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <MudAlert role="alert" Severity="Severity.Warning">Sorry, there's nothing at this address.</MudAlert>
+            </LayoutView>
+        </NotFound>
+    </Router>
+    </InitialDataLoader>
+</CascadingAuthenticationState>

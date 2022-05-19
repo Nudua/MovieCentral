@@ -1,0 +1,149 @@
+﻿@page "/movies"
+@using MovieCentral.Client.Store.Features.MovieList.Effects
+@inject IState<MovieListState> State
+@inject MovieFacade Facade
+@inject WatchListFacade WatchListFacade
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject ISnackbar Snackbar
+@implements IDisposable
+
+<PageTitle>Top 250 Movies of All Time</PageTitle>
+
+@if (@State.Value.FetchState == FetchState.Loading || @State.Value.FetchState == FetchState.None)
+{
+	<MudProgressCircular Indeterminate="true">Loading movies...</MudProgressCircular>
+}
+else if (@State.Value.FetchState == FetchState.Failure)
+{
+	<MudText Typo="Typo.body1">Unable to load movies from api... please try again.</MudText>
+}
+else if (@State.Value.FetchState == FetchState.Success)
+{
+	<div class="d-flex flex-column align-center mb-4">
+		<MudSelect FullWidth Class="pb-4" Style="width:200px;" T="Genre" Label="Genre" Value="State.Value.Genre" ValueChanged="OnSelectedGenreChanged">
+			@foreach (var genre in _genres)
+			{
+				<MudSelectItem Value="genre">@genre.GetDisplayName()</MudSelectItem>
+			}
+		</MudSelect>
+
+	</div>
+
+	@if (State.Value.TotalPages > 1)
+	{
+		<div class="d-flex flex-column align-center mb-4">
+			<MudPagination Color="Color.Primary" Count="State.Value.TotalPages" Selected="State.Value.CurrentPage" SelectedChanged="OnPaginationChanged" />
+		</div>
+	}
+
+	@if (State.Value.TotalCount > 0)
+	{
+		<MudGrid Justify="Justify.Center">
+			@foreach (var movie in State.Value.Movies)
+			{
+				var movieIcon = movie.IsInWatchList ? Icons.Material.Filled.Favorite : Icons.Material.Filled.FavoriteBorder;
+				<MudItem Style="width:400px;">
+					<MudCard>
+						<MudCardHeader>
+							<CardHeaderContent>
+								<MudText Typo="Typo.body1">@movie.Title</MudText>
+							</CardHeaderContent>
+							<CardHeaderActions>
+								<MudIconButton @onclick="() => ToggleFavoriteMovie(movie)" Icon="@movieIcon" Color="Color.Default" />
+							</CardHeaderActions>
+						</MudCardHeader>
+						<MudCardMedia Image="@movie.CoverUrl" Height="500" />
+						<MudCardContent>
+							<MudText Typo="Typo.body1">Ranking: @movie.Ranking</MudText>
+						</MudCardContent>
+					</MudCard>
+				</MudItem>
+			}
+		</MudGrid>
+
+		@if (State.Value.TotalPages > 1)
+		{
+			<div class="d-flex flex-column align-center mt-4">
+				<MudPagination Color="Color.Primary" Count="State.Value.TotalPages" Selected="State.Value.CurrentPage" SelectedChanged="OnPaginationChanged" />
+			</div>
+		}
+	}
+	else
+	{
+		<MudText Align="Align.Center" Typo="Typo.body1">Sorry no movies of that genre was found.</MudText>
+	}
+}
+
+
+@code {
+	private const int DefaultPageSize = 9;
+
+	private bool _userLoggedIn = false;
+	private Genre[] _genres;
+
+	protected override async Task OnInitializedAsync()
+	{
+		_genres = Enum.GetValues<Genre>();
+
+		var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+		var user = authState.User;
+
+		_userLoggedIn = user.Identity?.IsAuthenticated is true;
+
+		State.StateChanged += OnStateChanged;
+
+		if (State.Value.FetchState == FetchState.None)
+		{
+			Facade.LoadPagedList(1, DefaultPageSize, Genre.None);
+		}
+	}
+
+	public void OnSelectedGenreChanged(Genre genre)
+	{
+		if (genre == State.Value.Genre)
+		{
+			return;
+		}
+
+		Facade.LoadPagedList(1, DefaultPageSize, genre);
+	}
+
+	public void OnPaginationChanged(int page)
+	{
+		if (State.Value.CurrentPage == page)
+		{
+			return;
+		}
+
+		if (State.Value.CurrentPage != page)
+		{
+			Facade.LoadPagedList(page, State.Value.PageSize, State.Value.Genre);
+		}
+	}
+
+	public void ToggleFavoriteMovie(MovieSimpleDtoExtended movie)
+	{
+		if (!_userLoggedIn)
+		{
+			Snackbar.Add("You must sign in to be able to add movies to your watchlist.", Severity.Error);
+			return;
+		}
+
+		movie.IsInWatchList = !movie.IsInWatchList;
+
+		if (movie.IsInWatchList)
+		{
+			WatchListFacade.AddMovie(movie.Id);
+			Snackbar.Add($"{movie.Title} was added to your watchlist.", Severity.Success);
+		}
+		else
+		{
+			WatchListFacade.RemoveMovie(movie.Id);
+			Snackbar.Add($"{movie.Title} was removed from your watchlist.", Severity.Warning);
+		}
+	}
+
+	public void OnStateChanged(object sender, EventArgs args) => StateHasChanged();
+
+	public void Dispose() => State.StateChanged -= OnStateChanged;
+}
