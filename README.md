@@ -1,8 +1,12 @@
 # MovieCentral - Fullstack ASP.NET Core Web API + Blazor WebAssembly Application
 This project was started as a learning project, serving as a testbed for things I wanted to learn more about, such as Blazor, authentication with Azure AD B2C, and backend integration testing to mention a few. Since it's come to a more *complete* state, I figured I might as well share the source code.
 
+The application lets you browse the top 250 rated movies of all time, you can filter by genre and add them to your own watchlist when you sign up.
+
 ## Live demo
-A live demo is located over at https://moviecentral.ramstad.io it is hosted on [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) running inside a Docker container. Updates are automatically deployed using GitHub Actions, you can take a look at the [workflow file](.github/workflows/docker-ci-cd.yml).
+A live demo is located over at https://moviecentral.ramstad.io and is hosted on [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) running inside a Docker container. Updates are automatically deployed using GitHub Actions, you can take a look at the [workflow file](.github/workflows/docker-ci-cd.yml).
+
+[![Application Demo](preview.webp)](https://moviecentral.ramstad.io)
 
 ## Tech stack
 
