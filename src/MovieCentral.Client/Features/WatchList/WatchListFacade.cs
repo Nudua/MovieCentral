@@ -1,7 +1,7 @@
 ﻿using Fluxor;
-using MovieCentral.Client.Store.Features.WatchList.Actions.AddWatchListItem;
-using MovieCentral.Client.Store.Features.WatchList.Actions.LoadWatchList;
-using MovieCentral.Client.Store.Features.WatchList.Actions.RemoveWatchListItem;
+using MovieCentral.Client.Features.WatchList.Store.Actions.AddWatchListItem;
+using MovieCentral.Client.Features.WatchList.Store.Actions.LoadWatchList;
+using MovieCentral.Client.Features.WatchList.Store.Actions.RemoveWatchListItem;
 using MovieCentral.Shared.Utils;
 
 namespace MovieCentral.Client.Features.WatchList;

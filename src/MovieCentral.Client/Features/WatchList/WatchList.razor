@@ -1,7 +1,9 @@
 ﻿@page "/watchlist"
-@    using Microsoft.AspNetCore.Authorization
-@    using MovieCentral.Shared.Dtos.WatchList
-@    using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authorization
+@using MovieCentral.Client.Features.Shared.Store.UserProfile
+@using MovieCentral.Client.Features.WatchList.Store
+@using MovieCentral.Shared.Dtos.WatchList
+@using System.ComponentModel.DataAnnotations
 @implements IDisposable
 @inject ISnackbar Snackbar
 @inject IState<WatchListState> WatchListState

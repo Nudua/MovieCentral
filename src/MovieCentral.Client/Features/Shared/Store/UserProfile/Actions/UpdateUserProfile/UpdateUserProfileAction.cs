@@ -1,3 +1,3 @@
-﻿namespace MovieCentral.Client.Store.Features.UserProfile.Actions.UpdateUserProfile;
+﻿namespace MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.UpdateUserProfile;
 
 public record UpdateUserProfileAction(string NewNickName);

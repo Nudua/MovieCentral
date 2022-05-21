@@ -1,11 +1,11 @@
 using Fluxor;
 using MovieCentral.Client.Features.Shared;
 using MovieCentral.Client.Features.WatchList.Store;
-using MovieCentral.Client.Store.Features.WatchList.Actions.AddWatchListItem;
-using MovieCentral.Client.Store.Features.WatchList.Actions.LoadWatchList;
-using MovieCentral.Client.Store.Features.WatchList.Actions.RemoveWatchListItem;
+using MovieCentral.Client.Features.WatchList.Store.Actions.AddWatchListItem;
+using MovieCentral.Client.Features.WatchList.Store.Actions.LoadWatchList;
+using MovieCentral.Client.Features.WatchList.Store.Actions.RemoveWatchListItem;
 
-namespace MovieCentral.Client.Store.Features.WatchList.Reducers;
+namespace MovieCentral.Client.Features.WatchList.Store.Reducers;
 
 public static class WatchListReducers
 {

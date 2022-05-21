@@ -1,5 +1,5 @@
-using MovieCentral.Client.Store.Features.MovieList.Effects;
+using MovieCentral.Client.Features.Movies.Store.Effects;
 
-namespace MovieCentral.Client.Store.Features.MovieList.Actions.LoadMovieList;
+namespace MovieCentral.Client.Features.Movies.Store.Actions.LoadMovieList;
 
 public record LoadMovieListSuccessAction(List<MovieSimpleDtoExtended> Movies, int CurrentPage, int PageSize, int TotalCount, int TotalPages);

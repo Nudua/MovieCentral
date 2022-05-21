@@ -1,3 +1,3 @@
-namespace MovieCentral.Client.Store.Features.MovieList.Actions.LoadMovieList;
+namespace MovieCentral.Client.Features.Movies.Store.Actions.LoadMovieList;
 
 public record LoadMovieListFailureAction(string Reason);

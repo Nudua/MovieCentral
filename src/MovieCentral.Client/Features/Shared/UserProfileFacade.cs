@@ -1,7 +1,7 @@
 ﻿using Fluxor;
-using MovieCentral.Client.Store.Features.UserProfile.Actions;
-using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile;
-using MovieCentral.Client.Store.Features.UserProfile.Actions.UpdateUserProfile;
+using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions;
+using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.LoadUserProfile;
+using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.UpdateUserProfile;
 using MovieCentral.Shared.Utils;
 
 namespace MovieCentral.Client.Features.Shared;

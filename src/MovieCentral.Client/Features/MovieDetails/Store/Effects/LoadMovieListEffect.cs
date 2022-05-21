@@ -1,10 +1,10 @@
 using System.Net.Http.Json;
 using Fluxor;
-using MovieCentral.Client.Store.Features.Movie.Actions;
+using MovieCentral.Client.Features.MovieDetails.Store.Actions;
 using MovieCentral.Shared.Dtos.Movie;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Store.Features.Movie.Effects;
+namespace MovieCentral.Client.Features.MovieDetails.Store.Effects;
 
 public class LoadMovieEffect : Effect<LoadMovieAction>
 {

@@ -1,3 +1,3 @@
-﻿namespace MovieCentral.Client.Store.Features.WatchList.Actions.RemoveWatchListItem;
+﻿namespace MovieCentral.Client.Features.WatchList.Store.Actions.RemoveWatchListItem;
 
 public record RemoveWatchListItemAction(Guid MovieId);

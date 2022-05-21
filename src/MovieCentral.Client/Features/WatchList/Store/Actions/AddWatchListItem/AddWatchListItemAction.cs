@@ -1,3 +1,3 @@
-﻿namespace MovieCentral.Client.Store.Features.WatchList.Actions.AddWatchListItem;
+﻿namespace MovieCentral.Client.Features.WatchList.Store.Actions.AddWatchListItem;
 
 public record AddWatchListItemAction(Guid MovieId);

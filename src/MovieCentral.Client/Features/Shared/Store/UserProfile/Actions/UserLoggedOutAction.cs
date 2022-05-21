@@ -1,3 +1,3 @@
-﻿namespace MovieCentral.Client.Store.Features.UserProfile.Actions;
+﻿namespace MovieCentral.Client.Features.Shared.Store.UserProfile.Actions;
 
 public class UserLoggedOutAction { }

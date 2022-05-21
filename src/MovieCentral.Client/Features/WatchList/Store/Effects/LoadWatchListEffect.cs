@@ -1,10 +1,10 @@
 using System.Net.Http.Json;
 using Fluxor;
-using MovieCentral.Client.Store.Features.WatchList.Actions.LoadWatchList;
+using MovieCentral.Client.Features.WatchList.Store.Actions.LoadWatchList;
 using MovieCentral.Shared.Dtos.WatchList;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Store.Features.WatchList.Effects;
+namespace MovieCentral.Client.Features.WatchList.Store.Effects;
 
 public class LoadWatchListEffect : Effect<LoadWatchListAction>
 {

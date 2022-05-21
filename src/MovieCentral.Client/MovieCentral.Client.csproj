@@ -24,8 +24,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Features\Index\" />
-	  <Folder Include="Shared\Pages\" />
+	  <Folder Include="Features\Index\Components\" />
+	  <Folder Include="Features\Movies\Store\" />
 	</ItemGroup>
 
 </Project>

@@ -1,10 +1,10 @@
 ﻿using Fluxor;
-using MovieCentral.Client.Store.Features.Movie.Actions;
-using MovieCentral.Client.Store.Features.MovieList.Actions.LoadMovieList;
+using MovieCentral.Client.Features.MovieDetails.Store.Actions;
+using MovieCentral.Client.Features.Movies.Store.Actions.LoadMovieList;
 using MovieCentral.Shared.Constants;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Services;
+namespace MovieCentral.Client.Features.Movies;
 
 public class MovieFacade
 {

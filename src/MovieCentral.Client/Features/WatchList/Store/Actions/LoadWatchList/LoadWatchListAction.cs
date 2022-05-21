@@ -1,5 +1,5 @@
 using MovieCentral.Shared.Constants;
 
-namespace MovieCentral.Client.Store.Features.WatchList.Actions.LoadWatchList;
+namespace MovieCentral.Client.Features.WatchList.Store.Actions.LoadWatchList;
 
 public class LoadWatchListAction { }
