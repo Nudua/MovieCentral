@@ -12,6 +12,7 @@ A live demo is located over at https://moviecentral.ramstad.io and is hosted on 
 
 ### Frontend
 - Blazor WebAssembly
+- Vertical Slice Architecture
 - MudBlazor (UI Component Library)
 - Fluxor (Redux like State Management)
 - Microsoft Authentication Library (MSAL)
@@ -26,6 +27,7 @@ A live demo is located over at https://moviecentral.ramstad.io and is hosted on 
 - XUnit (testing)
 - FluentAssertions
 - AutoFixture
+- Swashbuckle (Swagger)
 
 ### Misc
 - Azure Active Directory B2C (Authentication)

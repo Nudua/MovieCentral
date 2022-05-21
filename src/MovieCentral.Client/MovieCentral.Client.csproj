@@ -23,4 +23,9 @@
 	  <ProjectReference Include="..\MovieCentral.Shared\MovieCentral.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Features\Index\Components\" />
+	  <Folder Include="Features\Movies\Store\" />
+	</ItemGroup>
+
 </Project>
