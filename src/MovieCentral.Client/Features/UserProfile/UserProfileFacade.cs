@@ -1,10 +1,10 @@
 ﻿using Fluxor;
-using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions;
-using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.LoadUserProfile;
-using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.UpdateUserProfile;
+using MovieCentral.Client.Features.UserProfile.Store.Actions;
+using MovieCentral.Client.Features.UserProfile.Store.Actions.LoadUserProfile;
+using MovieCentral.Client.Features.UserProfile.Store.Actions.UpdateUserProfile;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Features.Shared;
+namespace MovieCentral.Client.Features.UserProfile;
 
 public class UserProfileFacade
 {

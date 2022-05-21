@@ -1,10 +1,10 @@
 ﻿using System.Net.Http.Json;
 using Fluxor;
-using MovieCentral.Client.Features.Shared.Store.UserProfile.Actions.LoadUserProfile;
+using MovieCentral.Client.Features.UserProfile.Store.Actions.LoadUserProfile;
 using MovieCentral.Shared.Dtos.User;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Features.Shared.Store.UserProfile.Effects;
+namespace MovieCentral.Client.Features.UserProfile.Store.Effects;
 
 public class LoadUserProfileEffect : Effect<LoadUserProfileAction>
 {

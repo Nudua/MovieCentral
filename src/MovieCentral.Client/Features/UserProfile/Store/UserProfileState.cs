@@ -1,6 +1,6 @@
 ﻿using Fluxor;
 
-namespace MovieCentral.Client.Features.Shared.Store.UserProfile;
+namespace MovieCentral.Client.Features.UserProfile.Store;
 
 [FeatureState]
 public record UserProfileState(bool IsLoading, bool IsLoggedIn, string NickName)
