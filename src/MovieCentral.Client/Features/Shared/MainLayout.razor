@@ -16,7 +16,10 @@
         <MudButton Style="text-transform:none;" Size="Size.Large" StartIcon="@Icons.Material.Filled.Bookmark" Class="@GetActiveClass("/watchlist")" Href="/watchlist">Watchlist</MudButton>
         <MudSpacer />
         <MudTooltip Duration="1500" Text="@(_isDarkMode ? "Switch To Light Theme" : "Switch to Dark Theme")">
-            <MudToggleIconButton Class="mr-2" Color="Color.Inherit" @bind-Toggled="_isDarkMode" Icon="@Icons.Material.Outlined.DarkMode" ToggledIcon="@Icons.Material.Filled.LightMode" Title="Switch to Light Theme" ToggledTitle="Switch to Dark Theme"></MudToggleIconButton>
+            <MudToggleIconButton Class="mr-0" Color="Color.Inherit" @bind-Toggled="_isDarkMode" Icon="@Icons.Material.Outlined.DarkMode" ToggledIcon="@Icons.Material.Filled.LightMode" Title="Switch to Light Theme" ToggledTitle="Switch to Dark Theme"></MudToggleIconButton>
+        </MudTooltip>
+        <MudTooltip Duration="1500" Text="GitHub Repository">
+            <MudIconButton Href="https://github.com/Nudua/MovieCentral/" Class="mr-4" Color="Color.Inherit" @bind-Toggled="_isDarkMode" Icon="@Icons.Custom.Brands.GitHub" Title="GitHub Repository"></MudIconButton>
         </MudTooltip>
         <LoginDisplay />
     </MudAppBar>
