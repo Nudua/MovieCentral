@@ -1,8 +1,9 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 using Fluxor;
+using MovieCentral.Client.Features.Shared;
+using MovieCentral.Client.Features.WatchList.Store;
 using MovieCentral.Client.Store.Features.MovieList.Actions.LoadMovieList;
-using MovieCentral.Client.Store.State;
 using MovieCentral.Shared;
 using MovieCentral.Shared.Dtos.Movie;
 using MovieCentral.Shared.Utils;

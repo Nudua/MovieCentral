@@ -1,4 +1,4 @@
-namespace MovieCentral.Client.Store;
+namespace MovieCentral.Client.Features.Shared;
 
 public enum FetchState
 {

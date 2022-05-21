@@ -4,7 +4,7 @@ using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile;
 using MovieCentral.Client.Store.Features.UserProfile.Actions.UpdateUserProfile;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Services;
+namespace MovieCentral.Client.Features.Shared;
 
 public class UserProfileFacade
 {

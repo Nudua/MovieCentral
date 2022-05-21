@@ -1,7 +1,7 @@
 ﻿using Fluxor;
+using MovieCentral.Client.Features.Shared.Store.UserProfile;
 using MovieCentral.Client.Store.Features.UserProfile.Actions;
 using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile;
-using MovieCentral.Client.Store.State;
 
 namespace MovieCentral.Client.Store.Features.UserProfile.Reducers;
 

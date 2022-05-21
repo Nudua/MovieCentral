@@ -1,7 +1,7 @@
 ﻿@page "/watchlist"
-@using Microsoft.AspNetCore.Authorization
-@using MovieCentral.Shared.Dtos.WatchList
-@using System.ComponentModel.DataAnnotations
+@    using Microsoft.AspNetCore.Authorization
+@    using MovieCentral.Shared.Dtos.WatchList
+@    using System.ComponentModel.DataAnnotations
 @implements IDisposable
 @inject ISnackbar Snackbar
 @inject IState<WatchListState> WatchListState
@@ -80,7 +80,7 @@ else
 
     protected override void OnInitialized()
     {
-        if (WatchListState.Value.FetchState != Client.Store.FetchState.Success)
+        if (WatchListState.Value.FetchState != FetchState.Success)
         {
             Facade.Load();
         }
@@ -116,7 +116,7 @@ else
 
     public void OnMovieStateChanged(object sender, EventArgs args) 
     { 
-        if (WatchListState.Value.FetchState == Client.Store.FetchState.Success)
+        if (WatchListState.Value.FetchState == FetchState.Success)
         {
             UpdateSort(_sortOrder);
         }

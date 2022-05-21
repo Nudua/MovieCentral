@@ -4,7 +4,7 @@ using MovieCentral.Client.Store.Features.WatchList.Actions.LoadWatchList;
 using MovieCentral.Client.Store.Features.WatchList.Actions.RemoveWatchListItem;
 using MovieCentral.Shared.Utils;
 
-namespace MovieCentral.Client.Services;
+namespace MovieCentral.Client.Features.WatchList;
 
 public class WatchListFacade
 {

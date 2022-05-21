@@ -1,5 +1,5 @@
-﻿@using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile
-@using MovieCentral.Client.Store.Features.UserProfile.Actions
+﻿@    using MovieCentral.Client.Store.Features.UserProfile.Actions.LoadUserProfile
+@    using MovieCentral.Client.Store.Features.UserProfile.Actions
 @implements IDisposable
 @inject AuthenticationStateProvider _authenticationStateProvider
 @inject IState<UserProfileState> UserProfileState 
@@ -33,7 +33,7 @@
 
             UserProfileFacade.Load(user.Identity.Name);
 
-            if (WatchListState.Value.FetchState == Client.Store.FetchState.None)
+            if (WatchListState.Value.FetchState == FetchState.None)
             {
                 WatchListFacade.Load();
             }
